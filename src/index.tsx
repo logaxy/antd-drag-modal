@@ -47,8 +47,7 @@ export default class AntdDraggableModal extends Component<ModalProps> {
   }
 
   initialEvent = (visible: boolean = false) => {
-    const { title } = this.props
-    if (title && visible) {
+    if (visible) {
       setTimeout(() => {
         window.removeEventListener('mouseup', this.onMouseup, false)
 
@@ -57,18 +56,24 @@ export default class AntdDraggableModal extends Component<ModalProps> {
         this.container.style.overflow = 'hidden'
 
         const content = this.container.getElementsByClassName('ant-modal-content')[0]
-        this.content = content
-        this.content.style.position = 'relative'
+        if (content) {
+          this.content = content
+          this.content.style.position = 'relative'
+        }
 
         const header = this.container.getElementsByClassName('ant-modal-header')[0]
-        this.header = header
-        this.header.style.cursor = 'all-scroll'
-        this.header.onmousedown = this.onMouseDown
+        if (header) {
+          this.header = header
+          this.header.style.cursor = 'all-scroll'
+          this.header.onmousedown = this.onMouseDown
+        }
 
         const footer = this.container.getElementsByClassName('ant-modal-footer')[0]
-        this.footer = footer
-        this.footer.style.cursor = 'all-scroll'
-        this.footer.onmousedown = this.onMouseDown
+        if (footer) {
+          this.footer = footer
+          this.footer.style.cursor = 'all-scroll'
+          this.footer.onmousedown = this.onMouseDown
+        }
 
         window.addEventListener('mouseup', this.onMouseup, false)
       }, 0)
@@ -91,7 +96,7 @@ export default class AntdDraggableModal extends Component<ModalProps> {
     this.removeMove()
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     const { visible } = this.props
     this.initialEvent(visible)
   }
