@@ -13,13 +13,12 @@ class App extends React.Component<{}, { visible: boolean }> {
         const { visible } = this.state
         return (
             <div style={{ width: '100vw', height: '100vh', textAlign: 'center' }} id="app">
-                <Button onClick={() => { this.setState({ visible: true }) }}>visible</Button>
+                <Button onClick={() => { this.setState({ visible: true }) }}>showModal</Button>
                 <AntdDraggableModal
-                    title="DraggableModal"
                     visible={visible}
                     centered
                     width={500}
-                    maskClosable={false}
+                    maskClosable={true}
                     onCancel={() => { this.setState({ visible: false }) }}
                     onOk={() => { this.setState({ visible: false }) }}
                 >
