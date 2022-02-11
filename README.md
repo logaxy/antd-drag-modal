@@ -1,11 +1,11 @@
-antd-draggable-modal
+antd-drag-modal
 ===============================
 A draggable modal based on antd modal.
 
 ## Installation
 
 ```bash
-$ npm i --save antd-draggable-modal
+$ npm i --save antd-drag-modal
 ```
 
 
@@ -14,7 +14,7 @@ $ npm i --save antd-draggable-modal
 ```javascript
 import React from 'react'
 import { Button } from 'antd'
-import AntdDraggableModal from 'antd-draggable-modal'
+import AntdDragModal from 'antd-drag-modal'
 
 class MyComponent extends React.Component<{}, { visible: boolean }> {
     state = {
@@ -26,7 +26,7 @@ class MyComponent extends React.Component<{}, { visible: boolean }> {
         return (
             <div style={{ width: '100vw', height: '100vh', textAlign: 'center' }}>
                 <Button onClick={() => { this.setState({ visible: true }) }}>showModal</Button>
-                <AntdDraggableModal
+                <AntdDragModal
                     visible={visible}
                     centered
                     width={500}
@@ -35,7 +35,7 @@ class MyComponent extends React.Component<{}, { visible: boolean }> {
                     onOk={() => { this.setState({ visible: false }) }}
                 >
                     <div>ModalContent</div>
-                </AntdDraggableModal>
+                </AntdDragModal>
             </div>
         )
     }

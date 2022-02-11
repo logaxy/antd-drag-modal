@@ -3,7 +3,7 @@ import { Modal } from 'antd'
 import { ModalProps } from 'antd/lib/modal'
 import 'antd/es/modal/style/index.css'
 
-export default class AntdDraggableModal extends Component<ModalProps> {
+export default class AntdDragModal extends Component<ModalProps> {
   private simpleClassName: string
 
   private container: any

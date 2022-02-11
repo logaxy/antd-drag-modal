@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
-import AntdDraggableModal from '../../src/index'
-// import AntdDraggableModal from 'antd-draggable-modal' // for npm link
+import AntdDragModal from '../../src/index'
+// import AntdDragModal from 'antd-drag-modal' // for npm link
 import 'antd/dist/antd.css';
 
 class App extends React.Component<{}, { visible: boolean }> {
@@ -14,7 +14,7 @@ class App extends React.Component<{}, { visible: boolean }> {
         return (
             <div style={{ width: '100vw', height: '100vh', textAlign: 'center' }} id="app">
                 <Button onClick={() => { this.setState({ visible: true }) }}>showModal</Button>
-                <AntdDraggableModal
+                <AntdDragModal
                     visible={visible}
                     centered
                     width={500}
@@ -23,7 +23,7 @@ class App extends React.Component<{}, { visible: boolean }> {
                     onOk={() => { this.setState({ visible: false }) }}
                 >
                     <div>ModalContent</div>
-                </AntdDraggableModal>
+                </AntdDragModal>
             </div>
         )
     }
