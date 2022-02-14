@@ -15,10 +15,12 @@ class App extends React.Component<{}, { visible: boolean }> {
             <div style={{ width: '100vw', height: '100vh', textAlign: 'center' }} id="app">
                 <Button onClick={() => { this.setState({ visible: true }) }}>showModal</Button>
                 <AntdDragModal
+                    title="title"
                     visible={visible}
                     centered
                     width={500}
                     maskClosable={true}
+                    contentDraggable={false}
                     onCancel={() => { this.setState({ visible: false }) }}
                     onOk={() => { this.setState({ visible: false }) }}
                 >
