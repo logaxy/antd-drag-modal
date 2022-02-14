@@ -3,7 +3,11 @@ import { Modal } from 'antd'
 import { ModalProps } from 'antd/lib/modal'
 import 'antd/es/modal/style/index.css'
 
-export default class AntdDragModal extends Component<ModalProps> {
+interface IProps extends ModalProps {
+  contentDraggable?: boolean
+}
+
+export default class AntdDragModal extends Component<IProps> {
   private simpleClassName: string
 
   private container: any
@@ -49,6 +53,7 @@ export default class AntdDragModal extends Component<ModalProps> {
   initialEvent = (visible: boolean = false) => {
     if (visible) {
       setTimeout(() => {
+        const { contentDraggable = true } = this.props
         window.removeEventListener('mouseup', this.onMouseup, false)
 
         const container = document.getElementsByClassName(this.simpleClassName)[0]
@@ -59,6 +64,12 @@ export default class AntdDragModal extends Component<ModalProps> {
         if (content) {
           this.content = content
           this.content.style.position = 'relative'
+
+          if (contentDraggable) {
+            this.content.style.cursor = 'all-scroll'
+            this.content.onmousedown = this.onMouseDown
+          }
+
         }
 
         const header = this.container.getElementsByClassName('ant-modal-header')[0]
